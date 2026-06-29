@@ -1,0 +1,23 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    {% block extra_css%} {% endblock extra_css%}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    
+</head>
+
+<body>
+    <a  href="{% url 'index' %}"> <button id="backbtn">Back to Home</button></a>
+  {% block body %}{% endblock body %}
+
+  
+</body>
+
+</html>

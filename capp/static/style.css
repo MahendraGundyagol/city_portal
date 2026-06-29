@@ -1,0 +1,601 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+  background-color: black;
+}
+.video-tour-container {
+  max-width: 100%;
+  margin: 20px auto;
+  background: #222;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.video-title {
+  text-align: center;
+  padding: 10px 5px;
+  margin: 0;
+  background: #111;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.video-wrapper {
+  position: relative;
+}
+
+.city-video {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+.fact-box {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  display: none;
+  pointer-events: none;
+  user-select: none;
+  color: #ffd700;
+  text-align: center;
+  text-shadow: 1px 1px 3px #000;
+}
+
+/* Hover underline effect for navbar and footer links */
+.navbar li a:hover,
+.secondnav li a:hover,
+footer a:hover {
+  color: #fdd835; /* subtle yellow on hover */
+  position: relative;
+}
+
+.navbar li a:hover::after,
+.secondnav li a:hover::after,
+footer a:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #fdd835;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Initial state of underline (hidden) */
+.navbar li a::after,
+.secondnav li a::after,
+footer a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #fdd835;
+  transition: width 0.3s ease-in-out;
+}
+.navbar li a,
+.secondnav li a,
+footer a {
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+/* Optional: remove focus border when clicked */
+.navbar li a:focus,
+.secondnav li a:focus,
+footer a:focus {
+  outline: none;
+  border: none;
+}
+
+
+.login-box {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  margin: 20px auto;
+  transform: translate(-50%, -55%);
+  background: rgba(0,0,0,.9);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box{
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  right: 0;
+  margin-top: 50vh;
+  margin-right: 25vw;
+}
+.login-box p:first-child {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #fff;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 3px
+}
+
+.login-box a:hover {
+  background: #fff;
+  color: #272727;
+  border-radius: 5px;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fff);
+  animation: btn-anim1 1.5s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #fff);
+  animation: btn-anim2 1.5s linear infinite;
+  animation-delay: .375s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #fff);
+  animation: btn-anim3 1.5s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #fff);
+  animation: btn-anim4 1.5s linear infinite;
+  animation-delay: 1.125s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+
+  50%,100% {
+    bottom: 100%;
+  }
+
+}
+
+.login-box p:last-child {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.login-box a.a2 {
+  color: #fff;
+  text-decoration: none;
+}
+
+.login-box a.a2:hover {
+  background: transparent;
+  color: #aaa;
+  border-radius: 5px;
+}
+.firstnav li:hover{
+  border-bottom: 2px solid rgb(231, 223, 223);
+  cursor: pointer; 
+}
+.secondnav li:hover{
+  border-bottom: 2px solid rgb(231, 223, 223);
+  cursor: pointer;
+}
+.secondnav select:hover{
+  border-bottom: 2px solid rgb(231, 223, 223);
+  cursor: pointer;
+}
+.navbar{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    position:sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(15px);
+    background-color: black;
+}
+
+.w-100{
+  height: 400px;
+}
+#dropdown option{
+  color: black;
+  background-color: whitesmoke;
+  cursor: pointer;
+
+}
+.secondnav::-webkit-scrollbar{
+    display: none;
+}
+.firstnav{
+    width: 30%;
+    height:60px;
+    display: flex;
+    font-weight: bold;
+    color: white;
+    list-style: none;
+    justify-content: space-evenly;
+   align-items: center;
+   gap:5px;
+
+}
+.firstnav li a{
+  text-decoration: none;
+  color: white;
+}
+
+.btn button:hover{
+  background-color: goldenrod;
+  color: white;
+  cursor: pointer;
+}
+.secondnav{
+    width: 70%;
+    height:60px;
+    display: flex;
+    gap: 5px;
+    font-weight: bold;
+    color:white;
+    list-style: none;
+    justify-content: space-evenly;
+   align-items: center;
+   overflow-x: scroll;
+}
+.secondnav li a{
+  text-decoration: none;
+  color: white;
+}
+
+  @media (max-width:520px){
+    .navbar{
+        height: 80px;
+        flex-direction: column;
+  
+        
+    }
+    .secondnav{
+        width: 100%;
+        height: auto;
+        padding-left: 8px;
+        font-size:small;
+       justify-content: space-evenly;
+    }
+    
+    .firstnav{
+        height: 40px;
+        color: goldenrod;
+        margin-right: 64%;
+        font-size:small;    
+       
+    }
+    .firstnav li a{
+        height: 40px;
+        color: goldenrod;
+    }
+    }
+  
+.secondnav select{
+    font-weight: bold;
+    background: none;
+    color: white;
+    border: none;
+    all: unset;  
+
+}
+.navbar2{
+    width: 100%;
+    height: 60px;
+    background-color:white;
+    display: flex;
+    flex-direction: row;
+  
+
+}
+.logo img{
+    height: 60px;
+    padding-left:5%;
+}
+.btn button{
+    font-size: small;
+    border: 2px solid goldenrod;
+    color: goldenrod;
+    border-radius: 20px;
+    font-weight: bold;
+    height: 70%;
+    width: 98%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btn{
+    height: 50px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+    position: absolute;
+    right: 2%;
+    margin-top: 7px;
+}
+@media (max-width:706px){
+    .logo img{
+        width: 100%;
+        height:40px;
+    }
+    .btn{
+        height: 30px;
+        width: 100px;
+        margin-top: 15px;
+    }
+}
+@media (max-width:705px){
+    .logo img{
+        width: 100%;
+        height:40px;
+    }
+    .btn{
+        height: 50px;
+        width: 100px;
+        margin-top: 5px;
+        margin-right: 0%;
+    }
+}
+
+.container{
+    width:100vw;
+    height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  
+  .news{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    background-color:transparent;
+
+  }
+  @media  (max-width: 860px){
+    #live{
+      height:40px ;
+      width:40%;
+       display: flex;
+      flex-wrap:nowrap;
+      flex-direction: row;
+      font-size: smaller; 
+    }
+    .news marquee{
+      height: 40px;
+      width: 60%;
+    }
+  }
+    
+  #live{
+    height: 100%;
+    width: 13%;
+    background-color:rgb(243, 9, 9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  .news marquee{
+    width:87%;
+    height: 100%;
+    background-color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:black;
+  }
+  .current{
+    width: 100%;
+    height:auto;
+    background-color: #531a1a;
+  }
+  .current img{
+    width: 100%;
+    height: auto;
+    background-color: black;
+  }
+  .maincontainer{
+    position: relative;
+    width:100%;
+    height:auto;
+    background-color: black;
+    display: flex;
+    justify-content:space-evenly;
+    overflow-x: hidden;
+    gap:15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+  }
+  .thecard{
+    width:280pc;
+    height:300px;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    background-color: yellow;
+    min-width: 300px;
+  }
+  @media  (max-width:320px){
+    .maincontainer {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .thecard{
+      height:200px ;
+      width: 100%;
+    }
+  }
+  .thecard:hover{
+    transform:rotateY(180deg) ;
+  }
+  .thefront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: bisque;
+    color: #531a1a;
+  }
+  .theback{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: blue;
+    color: #531a1a;
+    transform: rotateY(180deg);
+  }
+  /* styling a map section */
+  .town h2{
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Logo animation */
+.logo-animate {
+  transition: transform 0.3s ease;
+}
+.logo-animate:hover {
+  transform: scale(1.1); /* Slightly enlarge the logo on hover */
+}
+
+/* Join Us Button hover effect */
+.join-btn:hover {
+  background-color: #ffc107;
+  color: black;
+  box-shadow: 0 0 10px #ffc107;
+  transition: 0.3s ease;
+}
+
+  #map{
+    width: 100%;
+  }

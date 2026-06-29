@@ -1,0 +1,25 @@
+#backbtn:hover {
+    cursor: pointer;
+    background-color: rgb(137, 143, 167);
+    color: black;
+}
+
+#backbtn{background-color: rgb(12, 10, 24);
+color: white;
+border: 2px solid whitesmoke;
+margin: 20px 20px;
+border-radius: 1rem;
+width: 150px;
+height:40px;
+font-size: medium;
+font-weight: bold;}
+@media (max-width:727px){
+    #backbtn{
+        width: max-content;
+        height: fit-content;
+        font-size: small;
+        font-weight: 600;
+        margin: 10px 10px;
+
+    }
+}

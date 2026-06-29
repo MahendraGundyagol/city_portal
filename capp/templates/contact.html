@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - City Portal</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background-color: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+    .contact-form {
+      background-color: #1a1a1a;
+      padding: 30px 25px;
+      border-radius: 12px;
+      max-width: 450px;
+      width: 90%;
+      color: white;
+      box-shadow: 0 0 15px #0dcaf0aa;
+    }
+    .contact-form h4 {
+      margin-bottom: 20px;
+      color: #0dcaf0;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #ccc;
+    }
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      border: none;
+      background-color: #333;
+      color: white;
+      font-size: 16px;
+      resize: vertical;
+    }
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+      outline: 2px solid #0dcaf0;
+    }
+    button {
+      width: 100%;
+      background: linear-gradient(45deg, #0dcaf0, #1983c9);
+      border: none;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(45deg, #1983c9, #0dcaf0);
+    }
+    @media (max-width: 400px) {
+      .contact-form {
+        padding: 20px 15px;
+        width: 95%;
+      }
+    }
+    .error-message {
+      color: #ff6b6b;
+      font-size: 14px;
+      margin-top: -12px;
+      margin-bottom: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="contact-form">
+  <h4>Contact Us</h4>
+
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <script>
+          alert("{{ message|escapejs }}");
+        </script>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  <form method="post" action="{% url 'contact' %}" id="contactForm" novalidate>
+    {% csrf_token %}
+    
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required />
+    <div class="error-message" id="nameError">Please enter your name.</div>
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" name="email" required />
+    <div class="error-message" id="emailError">Please enter a valid email.</div>
+
+    <label for="message">Your Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+    <div class="error-message" id="messageError">Please enter a message.</div>
+
+    <button type="submit">Send Message</button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
+
+  const nameError = document.getElementById('nameError');
+  const emailError = document.getElementById('emailError');
+  const messageError = document.getElementById('messageError');
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  form.addEventListener('submit', function(e) {
+    let valid = true;
+
+    if (!nameInput.value.trim()) {
+      nameError.style.display = 'block';
+      valid = false;
+    } else {
+      nameError.style.display = 'none';
+    }
+
+    if (!validateEmail(emailInput.value.trim())) {
+      emailError.style.display = 'block';
+      valid = false;
+    } else {
+      emailError.style.display = 'none';
+    }
+
+    if (!messageInput.value.trim()) {
+      messageError.style.display = 'block';
+      valid = false;
+    } else {
+      messageError.style.display = 'none';
+    }
+
+    if (!valid) {
+      e.preventDefault();
+    }
+  });
+</script>
+
+</body>
+</html>

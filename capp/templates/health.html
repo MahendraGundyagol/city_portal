@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Services in Belagavi</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: white;
+    }
+
+    section.health {
+      background: linear-gradient(135deg, #000000, #1c1c1c);
+      padding: 60px 0;
+    }
+
+    .health-card {
+      border: none;
+      border-radius: 1rem;
+      background-color: #121212;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .health-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown-section {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border-radius: 1rem;
+    }
+
+    .link-output {
+      margin-top: 15px;
+      font-size: 1.1rem;
+    }
+
+    a.text-info:hover {
+      color: #0dcaf0 !important;
+    }
+
+    select.form-select {
+      background-color: #000;
+      color: white;
+      border: 1px solid #555;
+    }
+
+    @media (max-width: 768px) {
+      .row.g-4 {
+        flex-direction: column;
+      }
+
+      .col-md-4 {
+        width: 100%;
+      }
+
+      .dropdown-section {
+        padding: 15px;
+      }
+    }
+
+    /* Back Button Styling */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      background-color: #ffffff;
+      color: #000;
+      border-radius: 30px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .back-btn i {
+      margin-right: 6px;
+    }
+
+    .back-btn:hover {
+      background-color: #0dcaf0;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back to Home Button -->
+  <a href="/" class="back-btn" title="Back to Home">
+    <i class="fas fa-arrow-left"></i> Home
+  </a>
+
+  <section class="health">
+    <div class="container">
+      <h2 class="text-center section-title">Health Services in Belagavi</h2>
+      <div class="row g-4 d-flex flex-wrap justify-content-center">
+
+        <!-- Hospitals -->
+        <div class="col-md-4 mb-3">
+          <div class="card health-card text-white text-center">
+            <div class="card-body">
+              <div class="mb-3 text-danger"><i class="fas fa-hospital-alt"></i></div>
+              <h5 class="card-title">Hospitals</h5>
+              <button class="btn btn-outline-danger w-100" onclick="toggleSection('hosp')">Select Hospital</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinics -->
+        <div class="col-md-4 mb-3">
+          <div class="card health-card text-white text-center">
+            <div class="card-body">
+              <div class="mb-3 text-warning"><i class="fas fa-clinic-medical"></i></div>
+              <h5 class="card-title">Clinics</h5>
+              <button class="btn btn-outline-warning w-100" onclick="toggleSection('clinic')">Select Clinic</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emergency Helplines -->
+        <div class="col-md-4 mb-3">
+          <div class="card health-card text-white text-center">
+            <div class="card-body">
+              <div class="mb-3 text-info"><i class="fas fa-phone-alt"></i></div>
+              <h5 class="card-title">Emergency Helplines</h5>
+              <button class="btn btn-outline-info w-100" onclick="toggleSection('helpline')">Select Helpline</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hospitals Dropdown -->
+      <div id="hosp" class="dropdown-section d-none">
+        <label for="hospSelect" class="form-label">Choose a Hospital:</label>
+        <select class="form-select mt-2" id="hospSelect" onchange="renderLink(this.value, 'hospLink')">
+          <option value="">-- Select --</option>
+          <option value="KLE Hospital|tel:+918335555555">KLE Hospital - +91 833 555 5555</option>
+          <option value="J.N. Medical College Hospital|tel:+918335556666">J.N. Medical College Hospital - +91 833 555 6666</option>
+          <option value="BIMS Hospital|tel:+918335557777">Belgaum Institute of Medical Sciences (BIMS) - +91 833 555 7777</option>
+        </select>
+        <div class="link-output text-info" id="hospLink"></div>
+      </div>
+
+      <!-- Clinics Dropdown -->
+      <div id="clinic" class="dropdown-section d-none">
+        <label for="clinicSelect" class="form-label">Choose a Clinic:</label>
+        <select class="form-select mt-2" id="clinicSelect" onchange="renderLink(this.value, 'clinicLink')">
+          <option value="">-- Select --</option>
+          <option value="City Care Clinic|tel:+918335558888">City Care Clinic - +91 833 555 8888</option>
+          <option value="Health Plus Clinic|tel:+918335559999">Health Plus Clinic - +91 833 555 9999</option>
+          <option value="Sunshine Clinic|tel:+918335551111">Sunshine Clinic - +91 833 555 1111</option>
+        </select>
+        <div class="link-output text-info" id="clinicLink"></div>
+      </div>
+
+      <!-- Helpline Dropdown -->
+      <div id="helpline" class="dropdown-section d-none">
+        <label for="helplineSelect" class="form-label">Choose an Emergency Helpline:</label>
+        <select class="form-select mt-2" id="helplineSelect" onchange="renderLink(this.value, 'helplineLink')">
+          <option value="">-- Select --</option>
+          <option value="Ambulance|tel:108">Ambulance - 108</option>
+          <option value="Fire|tel:101">Fire Department - 101</option>
+          <option value="Police|tel:100">Police - 100</option>
+        </select>
+        <div class="link-output text-info" id="helplineLink"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    function toggleSection(id) {
+      const sections = ['hosp', 'clinic', 'helpline'];
+      sections.forEach(sec => {
+        document.getElementById(sec).classList.add('d-none');
+      });
+      document.getElementById(id).classList.remove('d-none');
+    }
+
+    function renderLink(value, targetId) {
+      const container = document.getElementById(targetId);
+      if (!value) {
+        container.innerHTML = '';
+        return;
+      }
+      const [name, link] = value.split('|');
+      container.innerHTML = `📞 <a href="${link}" class="text-info fw-semibold" target="_blank">${name}</a>`;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

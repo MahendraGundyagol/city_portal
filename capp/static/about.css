@@ -1,0 +1,129 @@
+/* General Body Styling */
+body {
+  background-color: #0a0a0a;
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Back Button */
+.back-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  background-color: #1a1a1a;
+  color: #0dcaf0;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(13, 202, 240, 0.5);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1050;
+}
+.back-btn:hover,
+.back-btn:focus {
+  background-color: #0dcaf0;
+  color: #000;
+  transform: scale(1.15);
+  box-shadow: 0 4px 14px rgba(13, 202, 240, 0.8);
+  outline: none;
+}
+
+/* Full-Width Wrapper */
+.about-wrapper {
+  width: 100%;
+  padding: 40px 60px;
+}
+
+/* Center content in intro/values for readability */
+.about-intro,
+.values-section {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Team Card Hover Animation */
+.team-card:hover {
+  transform: translateY(-8px);
+  transition: transform 0.3s ease;
+}
+
+/* Card Styling */
+.card {
+  background-color: #111 !important;
+  border: none !important;
+}
+.card-title {
+  color: #0dcaf0 !important;
+}
+
+/* Rounded Image Tweaks */
+.card-img-top {
+  width: 130px !important;
+  height: 130px !important;
+  object-fit: cover;
+  border: 3px solid #0dcaf0;
+}
+
+/* Values Section Items */
+.list-group-item {
+  background-color: transparent !important;
+  border: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.list-group-item strong {
+  color: #0dcaf0;
+}
+
+/* Responsive - Small Devices */
+@media (max-width: 768px) {
+  .about-wrapper {
+    padding: 20px;
+  }
+
+  .card-img-top {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .fs-5 {
+    font-size: 1rem !important;
+  }
+}
+
+/* Responsive - Large Desktops */
+@media (min-width: 1200px) {
+  .card-img-top {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .display-4 {
+    font-size: 3.2rem;
+  }
+
+  .lead {
+    font-size: 1.4rem;
+  }
+
+  .fs-5 {
+    font-size: 1.25rem !important;
+  }
+}

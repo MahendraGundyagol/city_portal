@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Water & Power - Belagavi City Portal{% endblock %}
+
+{% block body %}
+<!-- Header -->
+<header class="bg-primary text-white text-center py-5 shadow-sm">
+  <div class="container">
+    <h1 class="display-5 fw-semibold">Water & Power in Belagavi</h1>
+    <p class="lead">Essential utility services for citizens of Belagavi</p>
+  </div>
+</header>
+
+<!-- Services Section -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Water Services -->
+      <div class="col-12 col-md-6">
+        <div class="card h-100 border-primary shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title text-primary">
+              <i class="fas fa-faucet"></i> Water Supply Services
+            </h4>
+            <p>
+              Belagavi City Corporation (BCC) provides water supply sourced from Rakaskop and Hidkal dams to homes and businesses.
+            </p>
+            <ul class="ps-3">
+              <li>Daily ward-wise water schedule</li>
+              <li>Tanker services available</li>
+              <li>Encouraging rainwater harvesting</li>
+            </ul>
+            <div class="d-flex flex-column flex-md-row gap-2 mt-3">
+              <a href="https://belagavicitycorp.org/" class="btn btn-outline-primary" target="_blank">Visit BCC</a>
+              <a href="https://belagavicitycorp.org/water-schedule" class="btn btn-primary" target="_blank">Water Schedule</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Power Services -->
+      <div class="col-12 col-md-6">
+        <div class="card h-100 border-success shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title text-success">
+              <i class="fas fa-bolt"></i> Electricity Supply Services
+            </h4>
+            <p>
+              Managed by HESCOM, electricity services cover residential and industrial supply, maintenance, and billing.
+            </p>
+            <ul class="ps-3">
+              <li>Online billing & payment</li>
+              <li>Report outages 24/7</li>
+              <li>Solar rooftop support</li>
+            </ul>
+            <a href="https://hescom.karnataka.gov.in/" class="btn btn-success mt-3" target="_blank">Visit HESCOM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Emergency Contacts -->
+<section class="bg-light py-4 mt-4">
+  <div class="container">
+    <div class="card p-4 shadow-sm">
+      <h5 class="mb-3">
+        <i class="fas fa-phone-alt"></i> Emergency Contacts & Helplines
+      </h5>
+      <ul class="list-unstyled mb-0">
+        <li><strong>BCC Water Complaints:</strong> 0831-2407276</li>
+        <li><strong>HESCOM Helpline:</strong> 1912</li>
+        <li><strong>Water Tanker Requests:</strong> 0831-2420420</li>
+        <li><strong>Electricity Billing Help:</strong> 0831-2407298</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

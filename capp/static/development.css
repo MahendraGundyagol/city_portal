@@ -1,0 +1,42 @@
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.section-title {
+  color: #0dcaf0;
+  font-weight: bold;
+}
+
+.dev-card {
+  background-color: #121212;
+  border: 1px solid #2c2c2c;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  color: #fff;
+}
+
+.dev-card:hover {
+  transform: translateY(-5px);
+}
+
+.back-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 50%;
+  font-size: 18px;
+  z-index: 1000;
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0dcaf0;
+  color: black;
+  transform: scale(1.1);
+}
